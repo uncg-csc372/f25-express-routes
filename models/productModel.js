@@ -17,7 +17,7 @@ async function getOneProductById(id) {
 
 
 async function deleteProduct(id) {
-    let queryText = "DELETE FROM products WHERE id =?; ";
+    let queryText = "DELETE FROM products WHERE id = $1 ";
     const values = [id];
     const result = await pool.query(queryText, values);
     return result.rowCount;
