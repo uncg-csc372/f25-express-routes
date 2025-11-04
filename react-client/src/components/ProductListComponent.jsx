@@ -35,7 +35,7 @@ const ProductsListComponent = () => {
               <p>Description: {product.description}</p>
               <p><Link className="btn btn-outline-info" to={`/products/${product.id}`}>View</Link></p>
               <button className="btn btn-danger" onClick={() => ProductsService.deleteProduct(product.id)
-                .then(() => setGames(products.filter(p => p.id !== product.id)))}>Delete</button>
+                .then(() => setProducts(products.filter(p => p.id !== product.id)))}>Delete</button>
 
             </div>
           </article>
