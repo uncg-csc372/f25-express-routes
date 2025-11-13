@@ -8,8 +8,8 @@ app.use(multer().none());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
+app.set("view engine", "pug");
+app.set("views", __dirname + "/views/pug");
 
 // Redirect root and /home to /products
 app.get('/', (req, res) => res.redirect('/products'));

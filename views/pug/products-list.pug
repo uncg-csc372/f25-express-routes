@@ -1,0 +1,16 @@
+extends layout
+
+block layout-content
+  button(id="new-prod-btn") Add New Product
+  include new-prod-form.pug
+  main.items-container
+    each product in productsList
+      article.item
+        div.text
+          h3 #{product.id}: #{product.name}
+          p $ #{product.price}
+          p Type: #{product.type}
+          p Description: #{product.description}
+          form(method="GET" action=`/products/${product.id}`)
+            button.inner-button View
+          button.delete-prod(id=`${product.id}`) Delete Product

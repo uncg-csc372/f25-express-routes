@@ -1,0 +1,12 @@
+extends layout
+block layout-content
+  button(id="new-prod-btn") Add New Product
+  include new-prod-form.pug
+  .card-holder
+    h3 #{prod.name}
+    p $ #{prod.price}
+    p Type: #{prod.type}
+    p Description: #{prod.description}
+    button.delete-prod(id=`${prod.id}`) Delete Product
+    form(method="GET" action="/products")
+      button.inner-button Back to Products List
