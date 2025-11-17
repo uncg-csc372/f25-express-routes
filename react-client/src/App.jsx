@@ -3,10 +3,10 @@ import './App.css'
 import ProductsListComponent from './components/ProductListComponent';
 import ProductDetailsComponent from './components/ProductDetailsComponent';
 import AddProductComponent from './components/AddProductComponent';
-import LoginPage from './components/LoginComponent';
+import LoginPage from './components/auth/LoginComponent';
 import { Link } from 'react-router-dom';
-import ProtectedLayout from './components/ProtectedLayout.jsx';
-import ProfilePage from './components/ProfilePage.jsx';
+import ProtectedLayout from './components/auth/ProtectedLayout.jsx';
+import ProfilePage from './components/auth/ProfilePage.jsx';
 
 function App() {
 
