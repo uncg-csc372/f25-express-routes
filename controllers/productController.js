@@ -6,7 +6,7 @@ async function fetchAllProducts(req, res) {
         const products = await model.getAllProducts();
         // res.json(products);
         // Render the products list view instead of sending JSONks
-        res.render("products-list", { productsList: products, title: "Product List" });
+        res.render("products-list", { productsList: products, title: "Product List", user: req.user  });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");
@@ -18,7 +18,7 @@ async function fetchProductById(req, res) {
     if (id) {
         try {
             const product = await model.getOneProductById(id);
-            res.render("product-details", { prod: product, title: `Product #${product.id}` });
+            res.render("product-details", { prod: product, title: `Product #${product.id}`, user: req.user  });
             // res.json(product);
         } catch (err) {
             console.error(err);

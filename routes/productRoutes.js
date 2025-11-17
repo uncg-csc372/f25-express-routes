@@ -3,8 +3,17 @@ const express = require("express");
 const router = express.Router();
 const productController = require('../controllers/productController');
 
-router.get("/", productController.fetchAllProducts);
-router.get("/:id", productController.fetchProductById);
-router.delete("/:id", productController.removeProduct);
-router.post("/", productController.createProduct);
+router.get("/", ensureAuth, productController.fetchAllProducts);
+router.get("/:id", ensureAuth, productController.fetchProductById);
+router.delete("/:id", ensureAuth, productController.removeProduct);
+router.post("/", ensureAuth, productController.createProduct);
+
+
+function ensureAuth(req, res, next) {
+  req.session.returnTo = req.originalUrl;
+  if (!req.isAuthenticated()) {
+    return res.redirect('/auth/login');
+  }
+  next();
+}
 module.exports = router;
