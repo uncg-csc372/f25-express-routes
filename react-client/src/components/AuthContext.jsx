@@ -37,15 +37,17 @@ export function AuthProvider({ children }) {
   const logout = async () => {
     try {
       // Tell the backend to destroy the session
-      await axios.post(`${BACKEND_URL}/auth/logout`);
+      await axios.post(`${BACKEND_URL}/auth/logout`, {}, {
+        withCredentials: true, // Include cookies in logout request
+      });
       setUser(null); // Clear user state in React
-      window.location.href = '/login';
     } catch (error) {
       console.error('Error logging out:', error);
+      setUser(null); // Clear user state even if logout fails
     }
   };
 
-  // 5. The value provided to all children
+  // 5. The value provided to all protected children
   const value = {
     user,
     isAuthenticated: !!user, // True if 'user' is not null

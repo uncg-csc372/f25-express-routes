@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
   // 1. Get auth state and functions from the context
-  // Because this page is inside ProtectedLayout, we are
-  // guaranteed that 'user' is not null.
+  // this page is inside ProtectedLayout, 'user' is never null.
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -13,10 +12,9 @@ function ProfilePage() {
   const handleLogout = async () => {
     try {
       await logout(); // Call the logout function from context
-      navigate('/login'); // Redirect to login page
+      navigate('/login'); // Redirect to login page after logout completes
     } catch (error) {
       console.error("Failed to log out:", error);
-      // Optionally show an error message to the user
     }
   };
 
