@@ -26,7 +26,7 @@ app.use(passport.session());
 const cors = require('cors');
 app.use(
     cors({
-        origin: 'http://localhost:5173', // Vite frontend URL
+        origin: process.env.CLIENT_BASE_URL, // Vite frontend URL
         methods: 'GET,POST,PUT,DELETE',
         credentials: true,
     })
