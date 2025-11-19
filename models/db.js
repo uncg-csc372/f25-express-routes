@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL
 });
-/ Create users table on startup if it doesn't exist
+// Create users table on startup if it doesn't exist
 const createUsersTable = async () => {
     const createTableQuery = `
         CREATE TABLE IF NOT EXISTS users (
